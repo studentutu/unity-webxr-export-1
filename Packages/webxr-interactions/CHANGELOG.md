@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - WebXRInputSystem unsubscribe OnHandUpdate OnDisable. (Issue #422)
+- Hands tracking update.
 
 ## [0.22.0] - 2024-02-25
 ### Added

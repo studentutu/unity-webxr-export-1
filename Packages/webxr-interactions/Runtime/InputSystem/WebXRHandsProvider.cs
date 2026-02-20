@@ -137,13 +137,14 @@ namespace WebXR.InputSystem
 
     public void UpdateHandJoints(WebXRHandData handData)
     {
-      if (handData.hand == 1)
+      switch (handData.hand)
       {
-        leftHandData = handData;
-      }
-      else
-      {
-        rightHandData = handData;
+        case 1:
+          leftHandData = handData;
+          break;
+        case 2:
+          rightHandData = handData;
+          break;
       }
     }
 

@@ -245,6 +245,10 @@ namespace WebXR.InputSystem
 #if XR_HANDS_1_1_OR_NEWER
     private static void OnHandUpdate(WebXRHandData handData)
     {
+      if (handData.hand == 0)
+      {
+        return;
+      }
       webXRHandsSubsystem?.SetIsTracked((Handedness)handData.hand, handData.enabled);
       if (handData.enabled)
       {
@@ -255,40 +259,42 @@ namespace WebXR.InputSystem
         {
           aimFlags |= MetaAimFlags.IndexPinching;
         }
-        if (handData.hand == 1)
+        switch (handData.hand)
         {
-          MetaAimHand.left ??= MetaAimHand.CreateHand(InputDeviceCharacteristics.Left);
-          MetaAimHand.left.UpdateHand(
-            true,
-            aimFlags,
-            new Pose(handData.pointerPosition, handData.pointerRotation),
-            handData.trigger,
-            0,
-            0,
-            0);
-        }
-        else
-        {
-          MetaAimHand.right ??= MetaAimHand.CreateHand(InputDeviceCharacteristics.Right);
-          MetaAimHand.right.UpdateHand(
-            true,
-            aimFlags,
-            new Pose(handData.pointerPosition, handData.pointerRotation),
-            handData.trigger,
-            0,
-            0,
-            0);
+          case 1:
+            MetaAimHand.left ??= MetaAimHand.CreateHand(InputDeviceCharacteristics.Left);
+            MetaAimHand.left.UpdateHand(
+              true,
+              aimFlags,
+              new Pose(handData.pointerPosition, handData.pointerRotation),
+              handData.trigger,
+              0,
+              0,
+              0);
+            break;
+          case 2:
+            MetaAimHand.right ??= MetaAimHand.CreateHand(InputDeviceCharacteristics.Right);
+            MetaAimHand.right.UpdateHand(
+              true,
+              aimFlags,
+              new Pose(handData.pointerPosition, handData.pointerRotation),
+              handData.trigger,
+              0,
+              0,
+              0);
+            break;
         }
       }
       else
       {
-        if (handData.hand == 1)
+        switch (handData.hand)
         {
-          DisableHandLeft();
-        }
-        else
-        {
-          DisableHandRight();
+          case 1:
+            DisableHandLeft();
+            break;
+          case 2:
+            DisableHandRight();
+            break;
         }
       }
     }

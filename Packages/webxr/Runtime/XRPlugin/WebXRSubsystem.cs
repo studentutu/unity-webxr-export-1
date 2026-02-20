@@ -119,12 +119,12 @@ namespace WebXR
     {
       if (OnHandUpdate != null)
       {
-        if (GetHandFromHandsArray(0, ref leftHand))
+        if (GetHandFromHandsArray(0, ref leftHand) && leftHand.hand == 1)
         {
           OnHandUpdate?.Invoke(leftHand);
         }
 
-        if (GetHandFromHandsArray(1, ref rightHand))
+        if (GetHandFromHandsArray(1, ref rightHand) && rightHand.hand == 2)
         {
           OnHandUpdate?.Invoke(rightHand);
         }
@@ -175,14 +175,14 @@ namespace WebXR
       if (OnHandUpdate != null && this.xrState != WebXRState.NORMAL)
       {
         handWasDisabled = !leftHand.enabled;
-        if (GetHandFromHandsArray(0, ref leftHand)
+        if (GetHandFromHandsArray(0, ref leftHand) && leftHand.hand == 1
             && (leftHand.enabled || !handWasDisabled))
         {
           OnHandUpdate?.Invoke(leftHand);
         }
 
         handWasDisabled = !rightHand.enabled;
-        if (GetHandFromHandsArray(1, ref rightHand)
+        if (GetHandFromHandsArray(1, ref rightHand) && rightHand.hand == 2
             && (rightHand.enabled || !handWasDisabled))
         {
           OnHandUpdate?.Invoke(rightHand);
