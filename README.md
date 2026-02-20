@@ -58,6 +58,8 @@ Quest Browser on Meta Quests (1, 2, Pro, etc...).
 
 Wolvic on Meta Quests (1, 2, Pro, etc...).
 
+Safari on Apple Vision Pro.
+
 Microsoft Edge on Hololens 2.
 
 Google Chrome on Android (Supports both AR and VR sessions).
@@ -76,11 +78,13 @@ PICO Browser on PICO 4 and PICO 4E.
 
 Wolvic on PICO 4 and PICO 4E.
 
+Default Browser on Spectacles by Snap.
+
 #### 🐞 Has bugs/issues
 
 Helio on Magic Leap One (Has a bug related to eye views).
 
-Safari on Apple Vision Pro (Needs to enable flags in system settings. No `selected` event on hand pinch).
+Default Browser on Spectacles has limited support for Hit-Test ([Check Snap WebXR documentation](https://developers.snap.com/spectacles/about-spectacles-features/webxr)).
 
 ### 🛤️ Roadmap
 
